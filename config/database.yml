@@ -1,0 +1,31 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: sample
+
+test:
+  <<: *default
+  host: &test_host localhost
+  port: &test_port 5432
+  database: sample
+
+staging:
+  <<: *default
+  host: staging_data_database_host
+  username: staging_data_database_username
+  password: staging_data_database_password
+  database: sample
+
+production:
+  <<: *default
+  host: production_data_database_host
+  username: production_data_database_username
+  password: production_data_database_password
+  database: sample
